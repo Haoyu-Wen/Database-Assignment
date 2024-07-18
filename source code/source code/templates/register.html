@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 100px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            transition: all .3s ease;
+        }
+
+        form:hover {
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"], input[type="tel"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: all .3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, input[type="tel"]:focus, input[type="number"]:focus {
+            border-color: #007BFF;
+            box-shadow: 0px 0px 10px rgba(0,123,255,0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .3s ease;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        a {
+            color: chocolate;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <a href="{{ url_for("index.index") }}">
+        <button type="button">首页</button>
+    </a><br>
+    <form method="POST">
+        <h2>Registration</h2>
+        <div>
+            <label for="phonenumber">
+                手机号
+            </label>
+            <input type="tel" id="phonenumber" name="phonenumber" required="required">
+        </div>
+        <div>
+            <label for="nickname">请输入昵称</label>
+            <input type="text" name="nickname" required="required">
+        </div>
+        <div>
+            <label for="password">请输入密码</label>
+            <input type="password" name="password" id="password" required="required">
+        </div>
+        <div>
+            <label for="confirm_password">确认密码</label>
+            <input type="password" name="confirm_password" id="confirm_password" required="required">
+        </div>
+        <div>
+            <p>个人信息</p>
+        </div>
+        <div>
+            <label for="name">真实姓名</label>
+            <input type="text" name="name" id="name" required="required">
+        </div>
+        <div>
+            <label for="age">年龄</label>
+            <input type="number" name="age" id="age" min="0" required="required">
+        </div>
+        <div>
+            <label for="sex">性别</label>
+            <input type="radio" name="sex" id="male" value=1 required="required">
+            <label for="male">男</label>
+            <input type="radio" name="sex" id="female" value=0>
+            <label for="female">女</label>
+        </div>
+        <div>
+            <label for="idcard">请输入身份证号</label>
+            <input type="text" name="idcard" id="idcard" required="required">
+        </div>
+        <div>
+            <label for="identify">请选择注册身份</label>
+            <br>
+            <input type="radio" name="indentify" id="indentify_passenger" value=0 required="required">
+            <label for="indentify_passenger">普通乘客</label>
+            <input type="radio" name="indentify" id="indentify_admin" value=1>
+            <label for="indentify_admin">列车长</label>
+            <input type="radio" name="indentify" id="indentify_captain" value=2>
+            <label for="indentify_captain">管理员</label>
+        </div>
+        <div>
+            <button type="submit">提交</button>
+        </div>
+    </form>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="#" onclick="javascript:history.go(-1);">返回上一页</a>
+    </div>
+</div>
+</body>
+</html>

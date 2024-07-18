@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+    my trips(captains)
+{% endblock %}
+{% block body %}
+    <div>
+        <ul>
+            {% for trip in trips %}
+                <li>
+                    <div>
+                        时间：{{ trip.year }}--{{ trip.month }}--{{ trip.day }} {{ trip.hour }}:{{ trip.minute }}
+                    </div>
+                    <div>
+                        车型：{{ trip.type }}
+                    </div>
+                    <div>
+                        路线：{{ trip.rname }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+{% endblock %}

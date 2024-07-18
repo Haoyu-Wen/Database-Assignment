@@ -1,0 +1,57 @@
+{% extends "account_center_base.html" %}
+{% block title %}
+    account-passenger
+{% endblock %}
+{% block body %}
+<style>
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+div {
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    transition: all .3s ease;
+}
+
+div:hover {
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+a {
+    display: block;
+    color: #007BFF;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all .3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    transform: scale(1.05);
+}
+</style>
+
+<div>
+    <a href="{{ url_for('account.bought_tickets_passenger') }}">
+        查看本人车票
+    </a>
+
+    <a href="{{ url_for('account.bought_tickets_user') }}">
+        查看购买的车票
+    </a>
+
+    <a href="{{ url_for('account.relational_passengers') }}">
+        查看关联乘客
+    </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+    show captain
+{% endblock %}
+{% block body %}
+    {#只展示一个captain的详细信息#}
+    <div>
+    <span>
+        列车长姓名：{{ captain.name }}
+    </span><br>
+        <span>
+        年龄：{{ captain.age }}
+    </span><br>
+        <span>
+        身份证：{{ captain.idcard }}
+    </span><br>
+        <span>
+        性别：{% if captain.sex %}
+            男
+        {% else %}
+            女
+        {% endif %}
+    </span>
+        <span>
+    年龄：{{ captain.age }}
+</span>
+        <span>
+        个人简介：{{ captain.description }}
+    </span><br>
+
+    </div>
+
+{% endblock %}

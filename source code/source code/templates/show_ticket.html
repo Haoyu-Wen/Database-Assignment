@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    查询车票
+{% endblock %}
+{% block body %}
+    <div>
+        <div>
+            <form method="post">
+                {% for trip in trips %}
+                    <div>
+                        <div>
+                            {{ trip.name }} {{ trip.train_id }}
+                        </div>
+                        <div>
+                            起始站:{{ trip.start_station }}——终点站:{{ trip.end_station }}
+                        </div>
+                        <div>
+                            {% if es == trip.end_station %}
+                                到 <small>{{ es }}</small>
+                            {% else %}
+                                过 <small>{{ es }}</small>
+                            {% endif %}
+                        </div>
+
+                        {% for train in trains %}
+                            {% if train.id==trip.train_id %}
+                                <div>
+                                    列车型号：{{ train.type }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% for captain in captains %}
+                            {% if captain.id==trip.captain_id %}
+                                <div>
+                                    列车长:{{ captain.name }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div>
+                            <a href="{{ url_for('index.show_ticket',trip_id=trip.trip_id) }}">
+                                购买
+                            </a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </form>
+
+{% endblock %}

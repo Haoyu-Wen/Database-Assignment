@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    show captains
+{% endblock %}
+{% block body %}
+    <div>
+        <div>
+    <span style="color: crimson;">
+        查看所有列车长的信息
+    </span>
+        </div>
+        {% for captain in captains %}
+            <ul>
+                <div>
+                    <span></span>姓名：{{ captain.name }}
+                </div>
+                <div><span>性别：
+                    {% if captain.sex %}
+
+                        男
+
+                    {% else %}
+
+                        女
+
+                    {% endif %}</span>
+                </div>
+                <div>
+                    年龄：{{ captain.age }}
+                </div>
+                <div>
+                    <a href="{{ url_for("account.show_captain", captain_id=captain.id) }}">
+                        <button type="button">
+                            查看{% if captain.sex %}他{% else %}她{% endif %}的详细信息
+                        </button>
+                    </a>
+                </div>
+            </ul>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

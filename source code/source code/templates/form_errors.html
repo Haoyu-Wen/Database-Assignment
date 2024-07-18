@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form errors</title>
+</head>
+<body>
+{% for key,value in errors.items() %}
+    <ul>
+        {{ value }}
+    </ul>
+{% endfor %}
+<div>
+    <a href="#" onclick="javascript:history.go(-1);" style="color: chocolate">返回上一页</a>
+</div>
+</body>
+</html>

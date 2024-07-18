@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}
+    add trips
+{% endblock %}
+{% block body %}
+    <div>
+        <form method="post">
+        <span>
+        请选择路线id
+            <select required="required" name="route_id">
+            {% for route in routes %}
+                <option value={{ route.id }}>
+            {{ route.name }}
+            </option>
+            {% endfor %}
+            </select>
+            <span>
+            <a href="{{ url_for("account.show_routes") }}"><button type="button">查看所有路线</button></a>
+        </span>
+        </span><br>
+            <span>
+        请选择发车时间 <input type="date" name="date" required="required">
+        </span><br>
+            <span>
+            请选择发售车票数 <input type="number" name="all_tickets" min="1" max="100" required="required">
+        </span><br>
+            <span>
+            选择列车长
+            <select required="required" name="captain_id">
+                {% for captain in captains %}
+                    <option value={{ captain.id }}>
+                    {{ captain.cname }}
+                </option>
+                {% endfor %}
+            </select>
+        <a href="{{ url_for("account.show_captains") }}">
+            <button type="button">查看所有列车长信息</button>
+        </a>
+        </span><br>
+            <span>
+            选择列车
+            <select required="required" name="train_id">
+                {% for train in trains %}
+                    <option value={{ train.id }}>
+                    {{ train.type }}
+                </option>
+                {% endfor %}
+            </select>
+            <a href="{{ url_for("account.show_trains") }}">
+                <button type="button">
+                    查看所有列车
+                </button>
+            </a>
+        </span><br>
+            <button type="submit">
+                提交
+            </button>
+        </form>
+        <div>
+
+        </div>
+
+    </div>
+{% endblock %}

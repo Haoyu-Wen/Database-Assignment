@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+    show_routes
+{% endblock %}
+{% block body %}
+    <div>
+        <ul>
+            {% for route in routes %}
+                <li>
+                    <div>
+                        <span style="font-size: medium;color: darkblue">id：{{ route[0].id }}</span>
+                        <span>路线名：{{ route[0].rname }} </span><br>
+                        <span><ul>站点名 到达时间 停留时间</ul></span>
+                        <ol>
+                            {% for station in route %}
+                                <li>
+                                    <div><span
+                                            style="color: deepskyblue; position: relative; left: 10px">{{ station.sname }}</span>
+                                        <span style="color:coral; position: relative; left: 20px"> 第{{ station.day }}天 {{ station.hour }}:{{ station.minute }}</span>
+                                        <span style="color: bisque; position: relative; left: 20px">{{ station.break }}min</span>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ol>
+
+                    </div>
+                </li>
+            {% endfor %}
+
+
+        </ul>
+        <div>
+            {% if not routes %}
+                <span>
+        暂时还没有路线哦，请添加吧。
+        </span>
+            {% endif %}
+        </div>
+        <div>
+            <a href="{{ url_for("account.add_routes") }}">
+                <button type="submit">
+                    添加路线
+                </button>
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

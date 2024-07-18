@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    show trains
+{% endblock %}
+{% block body %}
+    <div>
+        查看所有列车
+    </div>
+    <div>
+        {% for train in trains %}
+            <ul>
+<span>
+型号：{{ train.type }}
+</span><br>
+                <span>
+数量：{{ train.number }}
+</span><br>
+                <span>运行时间：{{ train.runtime }}</span><br>
+                <span>
+    车箱数：{{ train.coach_size }}
+</span><br>
+                <span>
+    座位数：{{ train.seat_size }}
+</span><br>
+                <span>
+    简介：{{ train.introduction }}
+</span><br>
+            </ul>
+        {% endfor %}
+        {% if not trains %}
+            <div><span>暂时没有列车哦，快去添加吧</span></div>{% endif %}
+    </div>
+    <div>
+        <a href="{{ url_for("account.add_trains") }}">
+            <button type="button">添加列车</button>
+        </a>
+    </div>
+
+{% endblock %}

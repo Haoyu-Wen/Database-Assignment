@@ -1,0 +1,4 @@
+Flask
+Flask-sqlalchemy
+Flask-migrate
+WTForm

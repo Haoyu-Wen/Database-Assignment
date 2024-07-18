@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+    add trains
+{% endblock %}
+{% block body %}
+    <div>
+        添加列车
+    </div>
+    <div>
+        <form method="post">
+            <ul>
+                <li>
+                    <label>
+                        列车车型：
+                        <input type="text" name="type" required="required">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        列车数量：
+                        <input type="number" min="0" required="required" name="number">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        使用时长：
+                        <input type="number" min="0" required="required" name="runtime">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>车厢数   ：<input type="number" min="0" required="required" name="coach"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>座位数 ：<input type="number" min="0" required="required" name="seat"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        简介  :
+                        <input type="text" name="introduction">
+                    </label>
+                </li>
+            </ul>
+            <div>
+                <button type="submit">
+                    提交
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}

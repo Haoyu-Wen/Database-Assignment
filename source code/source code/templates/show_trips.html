@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    show trips
+{% endblock %}
+{% block body %}
+    <div>
+        所有车次：
+    </div>
+    <div>
+        {% for trip in trips %}
+            <ul>
+                <div>
+    <span>
+    时间：{{ trip.year }}-{{ trip.month }}-{{ trip.day }}
+    </span><br>
+                    <span>
+        路线名：{{ trip.rname }}
+        <br>
+        <small>{{ trip.ss }}--{{ trip.es }}</small>
+    </span><br>
+                    <span>
+            车型：{{ trip.type }}
+        </span><br>
+                    <span>
+    列车长：{{ trip.cname }}
+    </span><br>
+                    <span>
+            发行车票：{{ trip.all_tickets }}
+        </span><br>
+                    <span>
+    余票：{{ trip.res_tickets }}
+    </span><br>
+                </div>
+            </ul>
+
+        {% endfor %}
+        {% if not trips %}没有车次{% endif %}
+    </div>
+    <div>
+        <a href="{{ url_for("account.add_trips") }}">
+            <button type="button">
+                添加车次
+            </button>
+        </a>
+    </div>
+
+
+
+{% endblock %}
