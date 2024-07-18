@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    {% endblock %}
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+        }
+
+        div {
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            transition: all .3s ease;
+        }
+
+        div:hover {
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        ul {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        ul li div {
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="color: crimson; font-size: medium">
+        {#导航条部分#}
+        {% if g.user %}
+            欢迎{{ g.user.nickname }}/
+            <a href="{{ url_for('account.logout') }}" style="color: crimson; font-size: medium">退出登录</a>
+            <div style="color: crimson; font-size: medium">
+                <a href="{{ url_for('account.center') }}">用户中心</a>
+            </div>
+        {% else %}
+            <a href="{{ url_for('account.login') }}">登录</a>/<a href="{{ url_for('account.register') }}">注册</a>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{{ url_for('index.index') }}">
+            <button>首页</button>
+        </a>
+    </div>
+
+    <div>
+        <a href="{{ url_for('account.shift_indentify') }}">
+            <button>切换身份</button>
+        </a>
+    </div>
+    <div>
+        <a href="{{ url_for('account.modify') }}">
+            <button>修改个人信息</button>
+        </a>
+    </div>
+    <div>
+        个人基本信息
+        <ul>
+            姓名：{{ g.user.name }}
+        </ul>
+        <ul>
+            电话号码：{{ g.user.phone }}
+        </ul>
+        <ul>
+            身份证号：{{ g.user.idcard }}
+        </ul>
+        <ul>
+            年龄：{{ g.user.age }}
+        </ul>
+        <ul>
+            性别：
+            {% if g.user.sex==0 %}
+                女
+            {% else %}
+                 男
+            {% endif %}
+        </ul>
+        <ul>
+            昵称：{{ g.user.nickname }}
+        </ul>
+        <ul>权限：
+            {% if g.user.indentify==0 %}
+                乘客
+            {% elif g.user.indentify==1 %}
+                列车长
+            {% elif g.user.indentify==2 %}
+                管理员
+            {% endif %}
+        </ul>
+
+    </div>
+    {% block body %}
+    {% endblock %}
+    <div>
+        <a href="#" onclick="javascript:history.go(-1);" style="color: chocolate">返回上一页</a>
+    </div>
+</body>
+</html>
+

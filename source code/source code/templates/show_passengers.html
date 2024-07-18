@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    查看关联乘客
+{% endblock %}
+{% block body %}
+    <div>
+        <button type="button" onclick="javascript:location.reload()" style="font-size: larger; color: darkviolet">
+            刷新乘车人
+        </button>
+        <br>
+        乘客信息
+        {% for passenger in  passengers %}
+            <ul>
+                <div>
+                    <form method="post">
+                        姓名：{{ passenger.name }}<br>
+                        身份证号：{{ passenger.idcard }}<br>
+                        年龄：{{ passenger.age }}<br>
+                        性别：{% if passenger.sex==0 %}
+                        女
+                    {% else %}
+                        男
+                    {% endif %}
+                        <br>
+                        <button type="submit" value={{ passenger.idcard }} name='idcard'>
+                            删除关联
+                        </button>
+                    </form>
+
+                </div>
+            </ul>
+        {% endfor %}
+
+        <a href="{{ url_for('index.add_passenger' ) }}">
+            <button type="button" style="color: crimson; font-size: larger">添加乘车人</button>
+        </a>
+        <br>
+
+        <a href="{{ url_for("index.index") }}">
+            <button type="button">返回首页</button>
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加乘车人员</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        font-family: 'Roboto', sans-serif;
+        padding: 20px;
+    }
+
+    div {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        transition: all .3s ease;
+    }
+
+    div:hover {
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+        transform: translateY(-5px);
+    }
+
+    a {
+        color: #007BFF;
+        text-decoration: none;
+        transition: all .3s ease;
+    }
+
+    a:hover {
+        color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all .3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+    </style>
+<body>
+<div>
+    请完善乘车人信息
+</div>
+<form method="POST">
+    <div>
+        <label for="name">真实姓名</label>
+        <input type="text" name="name" id="name" required="required">
+    </div>
+    <div>
+        <label for="age">年龄</label>
+        <input type="number" name="age" id="age" min="0" required="required">
+    </div>
+    <div>
+        <div for="sex">性别</div>
+        <input type="radio" name="sex" id="male" value=1 required="required">
+        <label for="male">男</label>
+        <input type="radio" name="sex" id="female" value=0>
+        <label for="female">女</label>
+    </div>
+    <div>
+        <label for="idcard">请输入身份证号</label>
+        <input type="text" name="idcard" id="idcard" required="required">
+    </div>
+    <div>
+        <button type="submit">
+            提交
+        </button>
+    </div>
+    <div>
+        <a href="#" onclick="javascript:history.back(-1);">返回购票</a>
+    </div>
+</form>
+</body>
+</html>

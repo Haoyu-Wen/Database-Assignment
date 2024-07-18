@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}
+    车票查询页面
+{% endblock %}
+{% block body %}
+    <div>
+        <div>
+            <p style="font-size: x-large; color: deepskyblue">
+                {{ value }}
+            </p>
+        </div>
+        <div>
+            {% if not infos %}
+                <span style="color: blue;font-size: larger">
+没有购买车票哦！
+    </span>
+            {% endif %}
+        </div>
+        <button type="button" onclick="javascript:location.reload()" style="font-size: larger; color: darkviolet">
+            刷新车票
+        </button>
+        <br>
+        {#    f"SELECT user.name as uname, user.phone phone, passenger.name pname, passenger.idcard pidcard,"#}
+        {#    f" trip.dateYear dyear, trip.dateMonth dmonth, trip.dateDay dday, route.name rname, train.type type,"#}
+        {#    f"route.start_station ss, route.end_station es, ticket.buy_time buy_time, ticket.state state "#}
+        <ol>
+            {% for info in infos %}
+                <li>
+                    车票
+                    <br>
+                    <div>
+                        <p style="font-size: larger">人员信息</p>
+                        <ul>
+                            <span>购买者：{{ info.uname }}</span><br>
+                            <span>电话:{{ info.phone }}</span>
+                        </ul>
+                        <ul>
+                            <span>乘客：{{ info.pname }}</span><br>
+                            <span>身份证号：{{ info.pidcard }}</span>
+                        </ul>
+                        <p style="font-size: larger">车票信息</p>
+                        <ul>
+                            <span>出发日期：{{ info.dyear }}-{{ info.dmonth }}-{{ info.dday }}</span><br>
+                        </ul>
+                        <ul>
+                            <span>列车车型：{{ info.type }}</span></br>
+                            <span>路线：{{ info.rname }}</span><br>
+                            <span>始发站：{{ info.ss }}-终点站{{ info.es }}</span><br>
+                            <span>上车站：{{ info.tss }}--下车站{{ info.tes }}</span>
+                        </ul>
+                        <span>购买时间：{{ info.buy_time }}</span><br>
+                        {#            <span>使用状态：{% if info.state==0 %}#}
+                        {#                未使用#}
+                        {#            {% else %}#}
+                        {#                已过期#}
+                        {#            {% endif %} </span>#}
+                        {#            似乎没用...懒得再写了更新是否使用了...#}
+                        <span><br></span>
+                    </div>
+                    {#       <form method="post">#}
+                    <a href="{{ url_for("account.delete_ticket",ticket_id=info.tid) }}">
+                        <button type="button">退票</button>
+                    </a>
+                    {#       </form>#}
+                </li>
+            {% endfor %}
+        </ol>
+        <br>
+        {#    <a href="#" onclick="javascript:history.back(-1);" style="font-size: larger">返回</a>#}
+    </div>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}
+    add routes
+{% endblock %}
+{% block head %}
+    <script src="{{ url_for('static', filename="jquery/jquery.3.6.min.js") }}"></script>
+    <style>
+        .input-container {
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div>
+        <form id="input-form" method="post">
+            <div>
+                <label>
+                    路线名：
+                    <input type="text" required="required" name="route_name">
+                </label>
+
+            </div>
+            <ol id="input-fields-container">
+                <li>
+                    <div>
+                        <div class="input-container">
+                            <label>站点名：</label>
+                            <input type="text" name="name0" required="required">
+                        </div>
+                        <div>抵达时刻：
+                            <ul>
+                                <div class="input-container">
+                                    第
+                                    <input type="number" name="day0" required="required" min="0">
+                                    <label>Day</label>
+                                </div>
+                            </ul>
+                            <ul>
+                                <div class="input-container">
+                                    <input type="number" name="hour0" required="required" min="0" max="23">
+                                    <label>Hour</label>
+                                </div>
+                            </ul>
+                            <ul>
+                                <div class="input-container">
+                                    <input type="number" name="minute0" required="required" min="0" max="59">
+                                    <label>Minute</label>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="input-container">
+                            <label>停留时间：</label>
+                            <input type="number" name="breaktime0" required="required" min="0">min
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div class="input-container">
+                            <label>站点名：</label>
+                            <input type="text" name="name1" required="required">
+                        </div>
+                        <div>抵达时刻：
+                            <ul>
+                                <div class="input-container">
+                                    第
+                                    <input type="number" name="day1" required="required" min="0">
+                                    <label>Day</label>
+                                </div>
+                            </ul>
+                            <ul>
+                                <div class="input-container">
+                                    <input type="number" name="hour1" required="required" min="0" max="23">
+                                    <label>Hour</label>
+                                </div>
+                            </ul>
+                            <ul>
+                                <div class="input-container">
+                                    <input type="number" name="minute1" required="required" min="0" max="59">
+                                    <label>Minute</label>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="input-container">
+                            <label>停留时间：</label>
+                            <input type="text" name="breaktime1" required="required" min="0">min
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            <div>
+                <button id="add-button" type="button">增加站点</button>
+            </div>
+            <div>
+                <button type="submit">提交</button>
+            </div>
+        </form>
+
+        <script>
+            $(document).ready(function () {
+                var counter = 2;
+
+                // 监听添加按钮的点击事件
+                $('#add-button').click(function () {
+                    var newItem = $('<li>' +
+                        '<div>' +
+                        '<div class="input-container">' +
+                        '<label>站点名</label>' +
+                        '<input type="text" name="name' + counter + '" required="required">' +
+                        '</div>' +
+                        '<div>抵达时刻：' +
+                        '<ul>' +
+                        '<div class="input-container">' +
+                        '第' +
+                        '<input type="number" name="day' + counter + '" required="required" min="0">' +
+                        '<label>Day</label>' +
+                        '</div>' +
+                        '</ul>' +
+                        '<ul>' +
+                        '<div class="input-container">' +
+                        '<input type="number" name="hour' + counter + '" required="required" min="0" max="23">' +
+                        '<label>Hour</label>' +
+                        '</div>' +
+                        '</ul>' +
+                        '<ul>' +
+                        '<div class="input-container">' +
+                        '<input type="number" name="minute' + counter + '" required="required" min="0" max="59">' +
+                        '<label>Minute</label>' +
+                        '</div>' +
+                        '</ul>' +
+                        '</div>' +
+                        '<div class="input-container">' +
+                        '<label>停留时间：</label>' +
+                        '<input type="number" name="breaktime' + counter + '" required="required" min="0">min' +
+                        '</div>' +
+                        '<button type="button" class="delete-button">删除站点</button>' +
+                        '</div>' +
+                        '</li>');
+
+                    // 将新的输入框组添加到有序列表中
+                    $('#input-fields-container').append(newItem);
+                    counter++;
+                });
+                $(document).on('click', '.delete-button', function () {
+                    $(this).closest('li').remove();
+                });
+            });
+        </script>
+
+
+    </div>
+{% endblock %}

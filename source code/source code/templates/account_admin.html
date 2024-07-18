@@ -1,0 +1,85 @@
+{% extends "account_center_base.html" %}
+{% block title %}
+    account-admin
+{% endblock %}
+{% block body %}
+<style>
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+div {
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    transition: all .3s ease;
+}
+
+div:hover {
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+ul {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+</style>
+<div>
+    <ul>
+        <li>
+            工资：{{ admin.salary }} CNY
+        </li>
+        <li>
+            简介：{{ admin.description }}
+        </li>
+    </ul>
+    <div>
+        <span style="color: darkviolet;font-size: x-large">
+            当前身份：管理员
+        </span>
+    </div>
+    <div>
+        <a href="{{ url_for('account.show_trips') }}">
+            <button type="button">查看所有车次</button>
+        </a>
+    </div>
+    <div>
+        <a href="{{ url_for('account.show_routes') }}">
+            <button type="button">查看所有路线</button>
+        </a>
+    </div>
+    <div>
+        <a href="{{ url_for('account.show_captains') }}">
+            <button type="button">查看所有列车长</button>
+        </a>
+    </div>
+    <div>
+        <a href="{{ url_for('account.show_trains') }}">
+            <button type="button">查看所有列车</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

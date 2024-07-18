@@ -1,0 +1,74 @@
+{% extends "account_center_base.html" %}
+{% block title %}
+    account-captain
+{% endblock %}
+{% block body %}
+<style>
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+
+div {
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    transition: all .3s ease;
+}
+
+div:hover {
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+ul {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+span {
+    color: darkviolet;
+    font-size: x-large;
+    display: block;
+    margin-bottom: 20px;
+}
+</style>
+
+<div>
+    <ul>
+        工资：{{ captain.salary }} CNY
+    </ul>
+    <ul>简介：
+        {{ captain.description }}
+    </ul>
+    <span>
+        当前身份：列车长
+    </span>
+    <div>
+        <a href="{{ url_for("account.my_trips") }}">
+            <button type="button">查看我的排班</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

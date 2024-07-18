@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+    shift-indentify
+{% endblock %}
+
+{% block body %}
+    <span>
+    姓名：{{ user.name }}
+    </span>
+    <br>
+    <span>
+    电话：{{ user.phone }}
+    </span>
+    <br>
+    <form method="post">
+        <span style="color: maroon">选择身份</span><br>
+        <span>
+
+            <button type="submit" name="indentify" value="0">
+            乘客
+{#                <input type="radio" name="indentify" value=0>#}
+        </button>
+        </span><br>
+        <span>
+
+            {% if g.user.indentify == 1 %}
+                <button type="submit" name="indentify" value="1">列车长
+{#                <input type="radio" name="indentify" value=1 >#}
+            </button>
+            {% else %}
+                <button type="submit" name="indentify" value="2">
+                管理员
+                </button>
+            {% endif %}
+        </span>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    {% endblock %}
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+<style>
+    body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        font-family: 'Roboto', sans-serif;
+        padding: 20px;
+    }
+
+    div {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        transition: all .3s ease;
+    }
+
+    div:hover {
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+        transform: translateY(-5px);
+    }
+
+    a {
+        color: #007BFF;
+        text-decoration: none;
+        transition: all .3s ease;
+    }
+
+    a:hover {
+        color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all .3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+    </style>
+<body>
+<div style="color: crimson; font-size: medium">
+{#导航条部分#}
+    {% if g.user %}
+        欢迎{{ g.user.nickname }}/<a href="{{ url_for("account.logout") }}" style="color: crimson; font-size: medium">退出登录</a>
+        <div style="color: crimson; font-size: medium">
+            <a href="{{ url_for("account.center") }}">用户中心</a>
+        </div>
+    {% else %}
+        <a href="{{ url_for("account.login") }}">登录</a>/<a href="{{ url_for("account.register") }}">注册</a>
+    {% endif %}
+</div>
+<div>
+    <a href="{{ url_for("index.index") }}">
+        <button>首页</button>
+    </a>
+</div>
+
+<div>
+    <a href="{{ url_for("account.shift_indentify") }}"><button>切换身份</button></a>
+</div>
+<form method="post">
+<div>
+    个人基本信息
+    <ul>
+        姓名：{{ g.user.name }} --> <input type="text" name="name" value={{ g.user.name }} required="required">
+    </ul>
+    <ul>
+        电话号码：{{ g.user.phone }}
+    </ul>
+    <ul>
+        身份证号：{{ g.user.idcard }}
+    </ul>
+    <ul>
+        <label>
+            年龄：{{ g.user.age }} --> <input type="number" name="age" value={{ g.user.age }} min="0" required="required">
+        </label>
+    </ul>
+    <ul>
+        性别：
+        {% if g.user.sex==0 %}
+            女
+        {% else %}
+            男
+        {% endif %}
+    --><select name="sex" required="required">
+        <option value="0">女</option>
+        <option value="1">男</option>
+    </select>
+    </ul>
+    <ul>
+        昵称：{{ g.user.nickname }} --> <input type="text" name="nickname" value={{ g.user.nickname }} required="required">
+    </ul>
+    <ul>权限：
+        {% if g.user.indentify==0 %}
+            乘客
+        {% elif g.user.indentify==1 %}
+            列车长
+        {% elif g.user.indentify==2 %}
+            管理员
+        {% endif %}
+    </ul>
+
+</div>
+{% block body %}
+
+{% if user %}
+<div>
+<ul>
+    工资：{{ user.salary }}
+</ul>
+<ul>
+    简介：{{ user.description }} --> <input type="text" name="description" value="no description" required="required">
+</ul>
+</div>
+{% endif %}
+<div><button type="submit">确定</button></div>
+</form>
+{% endblock %}
+<div>
+    <a href="#" onclick="javascript:history.go(-1);" style="color: chocolate">返回上一页</a>
+</div>
+</body>
+</html>
+ 
